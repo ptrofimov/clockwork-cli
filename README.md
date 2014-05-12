@@ -5,6 +5,23 @@ Clockwork-cli
 
 This is command line interface for Clockwork.
 
+## Usage
+
+* Install clockwork-cli via composer:
+```
+composer require ptrofimov/clockwork-cli dev-master
+```
+* Run script to monitor clockwork logs from current project:
+```
+php ./bin/clockwork-cli.php
+```
+* Or you can monitor logs from many projects:
+```
+php ./bin/clockwork-cli.php /www/*
+```
+* You will see updating list of HTTP requests. The first character is a hotkey.
+* Press the hotkey to view details of HTTP request.
+
 ## Licence
 
 Copyright (c) 2014 Petr Trofimov
