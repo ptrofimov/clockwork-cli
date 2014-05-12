@@ -3,16 +3,24 @@ namespace Clockwork\Cli;
 
 class LogFileScanner
 {
-    public function getNewFiles(array $dirs, $since)
+    /** @var array */
+    private $dirs;
+
+    public function __construct(array $dirs)
     {
-        $files = [];
-        foreach ($dirs as $dir) {
+        $this->dirs = $dirs;
+    }
+
+    public function getNewFiles($since)
+    {
+        $files = array();
+        foreach ($this->dirs as $dir) {
             $dir .= '/app/storage/clockwork';
             if (is_dir($dir)) foreach (new \DirectoryIterator($dir) as $fileInfo) {
                 if ($fileInfo->isFile() && $fileInfo->getExtension() == 'json') {
                     $timestamp = (float) $fileInfo->getFilename();
                     if ($timestamp > $since) {
-                        $files[] = ['file' => $fileInfo->getPathname(), 'time' => $timestamp];
+                        $files[] = array('file' => $fileInfo->getPathname(), 'time' => $timestamp);
                     }
                 }
             }

@@ -4,7 +4,7 @@ namespace Clockwork\Cli;
 class Colors
 {
     /** @var array */
-    private $colors = [
+    private $colors = array(
         'black' => "\033[0;30m",
         'blue' => "\033[0;34m",
         'green' => "\033[0;32m",
@@ -22,9 +22,9 @@ class Colors
         'yellow' => "\033[1;33m",
         'white' => "\033[1;37m",
         'default' => "\033[0m",
-    ];
+    );
     /** @var array */
-    private $colorCodes = [];
+    private $colorCodes = array();
 
     public function __construct()
     {
@@ -48,7 +48,7 @@ class Colors
     /** @return array */
     public function example()
     {
-        $example = [];
+        $example = array();
         foreach ($this->colors as $name => $code) {
             $example[] = $this->colorize("{{$name}}$name{default}");
         }
