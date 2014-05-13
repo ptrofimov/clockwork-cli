@@ -29,7 +29,7 @@ class Application
     {
         $hotKey = 'a';
         $links = array();
-        $since = microtime(true) - 60000;
+        $since = microtime(true);
         system("stty -echo -icanon min 0 time 0");
         while (true) {
             foreach ($this->fileScanner->getNewFiles($since) as $file) {
@@ -41,8 +41,16 @@ class Application
                 $since = $file['time'];
             }
             usleep($this->updateInterval * 1000000);
-            foreach (str_split(fread(STDIN, 10)) as $char) if (isset($links[$char])) {
-                $this->details->output(json_decode(file_get_contents($links[$char]), true));
+            foreach (str_split(fread(STDIN, 10)) as $char) {
+                if (ord($char) == 127) {
+                    $since = microtime(true) - 600;
+                    echo 'Requests for last 10 minutes', PHP_EOL;
+                } elseif (ord($char) == 27) {
+                    system("stty echo");
+                    exit;
+                } elseif (isset($links[$char])) {
+                    $this->details->output(json_decode(file_get_contents($links[$char]), true));
+                }
             }
         }
 
