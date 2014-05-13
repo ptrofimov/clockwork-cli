@@ -28,6 +28,8 @@ composer global require ptrofimov/clockwork-cli:*
 ```
 * You will see updating list of HTTP requests. The first character is a hotkey.
 * Press the hotkey to view details of HTTP request.
+* Press Backspace to show requests for last 10 minutes
+* Press Escape to exit
 
 ## Licence
 
