@@ -17,19 +17,20 @@ class Details extends Base
         echo $this->color('{yellow}REQUEST HEADERS{default}');
         echo PHP_EOL;
         foreach ($log['headers'] as $name => $header) {
-            echo $this->color("{cyan}" . ucwords($name) . ":{default} " . implode(';', $header) . "\n");
+            echo $this->color("{light blue}" . ucwords($name) . ":{default} " . implode(';', $header) . "\n");
         }
     }
 
     private function outputQueries(array $log)
     {
-        $keywords = array('SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'INSERT', 'INTO', 'VALUES', 'UPDATE', 'SET', 'HAVING');
+        $keywords = array('SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'INSERT', 'INTO', 'VALUES', 'UPDATE', 'SET', 'HAVING', 'IN', 'IS', 'NULL', 'ASC', 'DESC');
         echo PHP_EOL;
-        echo $this->color('{yellow}DATABASE QUERIES{default}');
+        echo $this->color('{yellow}DATABASE QUERIES{default} ');
+        echo sprintf("(%d, %.3f)", count($log['databaseQueries']), $log['databaseDuration'] / 1000);
         echo PHP_EOL;
         foreach ($log['databaseQueries'] as $query) {
-            echo sprintf('%7.3f ', $query['duration']);
-            echo $this->color(preg_replace('/' . implode('|', $keywords) . '/', '{cyan}$0{default}', $query['query']));
+            echo sprintf('%7.3f ', $query['duration'] / 1000);
+            echo $this->color(preg_replace('/\b(' . implode('|', $keywords) . ')\b/i', '{light blue}$0{default}', $query['query']));
             echo PHP_EOL;
         }
     }
@@ -40,8 +41,8 @@ class Details extends Base
         echo $this->color('{yellow}TIMELINE{default}');
         echo PHP_EOL;
         foreach ($log['timelineData'] as $item) {
-            echo sprintf('%7.3f ', $item['duration']);
-            echo $item['description'];
+            echo sprintf('%7.3f ', $item['duration'] / 1000);
+            echo trim($item['description'], '.');
             echo PHP_EOL;
         }
     }
@@ -51,11 +52,12 @@ class Details extends Base
         echo PHP_EOL;
         echo $this->color('{yellow}GENERAL{default}');
         echo PHP_EOL;
-        echo $this->color("{cyan}ID:{default} $log[id]"), PHP_EOL;
-        echo $this->color("{cyan}Time:{default} $log[time]"), PHP_EOL;
-        echo $this->color("{cyan}Method:{default} $log[method]"), PHP_EOL;
-        echo $this->color("{cyan}URI:{default} $log[uri]"), PHP_EOL;
-        echo $this->color("{cyan}Controller:{default} $log[controller]"), PHP_EOL;
-        echo $this->color("{cyan}Response status:{default} $log[responseStatus]"), PHP_EOL;
+        echo $this->color("{light blue}ID:{default} $log[id]"), PHP_EOL;
+        echo $this->color("{light blue}Time:{default} " . date('Y-m-d H:i:s', $log['time'])), PHP_EOL;
+        echo $this->color("{light blue}Duration:{default} " . sprintf('%.3f', $log['responseDuration'] / 1000)), PHP_EOL;
+        echo $this->color("{light blue}Method:{default} $log[method]"), PHP_EOL;
+        echo $this->color("{light blue}URI:{default} $log[uri]"), PHP_EOL;
+        echo $this->color("{light blue}Controller:{default} $log[controller]"), PHP_EOL;
+        echo $this->color("{light blue}Response status:{default} $log[responseStatus]"), PHP_EOL;
     }
 }
