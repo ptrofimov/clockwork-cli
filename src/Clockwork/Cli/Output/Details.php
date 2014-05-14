@@ -9,6 +9,7 @@ class Details extends Base
         $this->outputQueries($log);
         $this->outputTimeline($log);
         $this->outputGeneral($log);
+        echo PHP_EOL;
     }
 
     private function outputHeaders(array $log)
