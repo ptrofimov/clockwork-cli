@@ -38,12 +38,24 @@ class Details extends Base
 
     private function outputTimeline(array $log)
     {
+        $time = array();
+        foreach ($log['timelineData'] as $item) {
+            $time[] = $item['start'];
+            $time[] = $item['end'];
+        }
+        $min = min($time);
+        $max = max($time);
+        $step = ($max - $min) / 10;
+
         echo PHP_EOL;
         echo $this->color('{yellow}TIMELINE{default}');
         echo PHP_EOL;
         foreach ($log['timelineData'] as $item) {
             echo sprintf('%7.3f ', $item['duration'] / 1000);
-            echo trim($item['description'], '.');
+            for ($i = $min; $i < $max - $step; $i += $step) {
+                echo $i + $step < $item['start'] || $i >= $item['end'] ? '.' : '#';
+            }
+            echo ' ', trim($item['description'], '.');
             echo PHP_EOL;
         }
     }
