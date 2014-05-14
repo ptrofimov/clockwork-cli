@@ -31,6 +31,7 @@ class Application
         $links = array();
         $since = microtime(true);
         system("stty -echo -icanon min 0 time 0");
+        echo $this->colors->colorize('{yellow}F{default}irst symbol in line - show details, {yellow}Backspace{default} - show requests for last 10 minutes, {yellow}Escape{default} - exit'), PHP_EOL;
         while (true) {
             foreach ($this->fileScanner->getNewFiles($since) as $file) {
                 $log = json_decode(file_get_contents($file['file']), true);
