@@ -1,9 +1,11 @@
 Clockwork-cli
 =============
 
-**[Clockwork](http://github.com/itsgoingd/clockwork-chrome) is a Chrome extension for PHP development**, extending Developer Tools with a new panel providing all kinds of information useful for debugging and profiling your PHP applications, including information about request, headers, get and post data, cookies, session data, database queries, routes, visualisation of application runtime and more.
+**[Clockwork](http://github.com/itsgoingd/clockwork)** is a tool for debugging and profiling PHP applications.
 
-This is command line interface for Clockwork.
+**[Clockwork-chrome](http://github.com/itsgoingd/clockwork-chrome)** is a Chrome extension for Clockwork.
+
+**This project** is a command-line interface for Clockwork.
 
 ## Installation
 

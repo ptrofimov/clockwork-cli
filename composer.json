@@ -1,7 +1,7 @@
 {
     "name": "ptrofimov/clockwork-cli",
-    "description": "Command line interface for Clockwork, a Chrome extension for PHP development",
-    "keywords": ["debugging", "profiling", "logging", "laravel", "cli", "clockwork"],
+    "description": "Command-line interface for Clockwork, the tool for debugging and profiling PHP applications",
+    "keywords": ["clockwork", "cli", "laravel", "debugging", "profiling", "logging"],
     "license": "MIT",
     "homepage": "http://github.com/ptrofimov/clockwork-cli",
     "authors": [
