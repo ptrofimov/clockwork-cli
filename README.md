@@ -17,6 +17,10 @@ composer require ptrofimov/clockwork-cli:*
 ```
 composer global require ptrofimov/clockwork-cli:*
 ```
+* You could also register Artisan command
+```
+Artisan::add(new Clockwork\Cli\Laravel\Command);
+```
 
 ## Usage
 
