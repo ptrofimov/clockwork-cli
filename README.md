@@ -37,7 +37,13 @@ Artisan::add(new Clockwork\Cli\Laravel\Command);
 * Press Backspace to show requests for last 10 minutes
 * Press Escape to exit
 
-## Licence
+## Screenshots
+
+![Clockwork Cli Trace](https://raw.githubusercontent.com/ptrofimov/clockwork-cli/master/screenshots/clockwork-cli-trace.png)
+
+![Clockwork Cli Details](https://raw.githubusercontent.com/ptrofimov/clockwork-cli/master/screenshots/clockwork-cli-details.png)
+
+## License
 
 Copyright (c) 2014 Petr Trofimov
 
