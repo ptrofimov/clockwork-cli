@@ -7,7 +7,7 @@ class ShortLine extends Base
     {
         echo $this->color(sprintf(
             '%s %5.3f %s %s %s {dark gray}%s{default}' . PHP_EOL,
-            date('H:m:i', $log['time']),
+            date('H:i:s', $log['time']),
             $log['responseDuration'] / 1000,
             $log['responseStatus'] >= 300 ? "{light red}$log[responseStatus]{default}" : "{light green}$log[responseStatus]{default}",
             $log['method'],
