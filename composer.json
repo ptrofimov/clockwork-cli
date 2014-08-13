@@ -16,7 +16,9 @@
         "issues": "https://github.com/ptrofimov/clockwork-cli/issues"
     },
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "itsgoingd/clockwork": "1.*"
+        
     },
     "autoload": {
         "psr-4": {
