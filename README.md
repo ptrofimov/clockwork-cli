@@ -1,9 +1,11 @@
 Clockwork-cli
 =============
 
-**[Clockwork](http://github.com/itsgoingd/clockwork)** is a tool for debugging and profiling PHP applications.
+**[Clockwork](http://github.com/itsgoingd/clockwork)** - is a tool for debugging and profiling PHP applications.
 
-**[Clockwork-chrome](http://github.com/itsgoingd/clockwork-chrome)** is a Chrome extension for Clockwork.
+**[Clockwork-chrome](http://github.com/itsgoingd/clockwork-chrome)** - is a Chrome extension for Clockwork.
+
+**[Clockwork-firebug](https://github.com/sidorovich/clockwork-firebug)** - it's Clockwork extension for Firebug.
 
 **This project** is a command-line interface for Clockwork.
 
