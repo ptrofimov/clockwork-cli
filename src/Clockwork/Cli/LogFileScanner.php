@@ -15,7 +15,7 @@ class LogFileScanner
     {
         $files = array();
         foreach ($this->dirs as $dir) {
-            $dir .= '/app/storage/clockwork';
+            $dir = $this->getClockworkDirectory($dir);
             if (is_dir($dir)) foreach (new \DirectoryIterator($dir) as $fileInfo) {
                 if ($fileInfo->isFile() && $fileInfo->getExtension() == 'json') {
                     $timestamp = (float) $fileInfo->getFilename();
@@ -30,5 +30,14 @@ class LogFileScanner
         });
 
         return $files;
+    }
+
+    private function getClockworkDirectory($dir)
+    {
+        if (file_exists($dir.'/app/storage/clockwork')) {
+            return $dir.'/app/storage/clockwork';
+        } else {
+            return $dir.'/storage/clockwork';
+        }
     }
 }
